@@ -56,6 +56,8 @@ async function handler(req: Request): Promise<Response> {
     }
 
     // 直接返回目标服务器的响应体、状态码和处理过的头信息
+    responseHeaders.delete("content-encoding");
+responseHeaders.delete("content-length");
     return new Response(response.body, {
       status: response.status,
       statusText: response.statusText,
